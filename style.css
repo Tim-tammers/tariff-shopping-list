@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 500px;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 5px;
+    
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  .price-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .price-button:hover {
+    background-color: #45a049;
+  }
