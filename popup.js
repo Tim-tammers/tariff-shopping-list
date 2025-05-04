@@ -166,19 +166,25 @@ renderList();
 function getTariffPrice(basePrice, country, productType, pricingModel) {
   // Extract the numeric price value
   const priceMatch = basePrice.match(priceRegex);
-  const isPercentagePricing = pricingModel === "true";
+
+  const isPercentagePricing = pricingModel;
+  console.log("pricing model",isPercentagePricing);
   if (!priceMatch) return basePrice;
   
   const originalPrice = parseFloat(basePrice.replace(/[^0-9.-]+/g, ''));
   
   // Get tariff rates from maps
-  const tariffPercentage = countryMap[country] || countryMap["Default"];
+  const tariffPercentage = country in countryMap
+  ? countryMap[country]
+  : countryMap["Default"];
   const markupPercentage = categoryMap[productType] || categoryMap["General"];
-  
+  console.log("country ", tariffPercentage);
   let adjustedPrice;
   if (isPercentagePricing) {
+    console.log("percentage pricing model hit");
     adjustedPrice = originalPrice * (1 + tariffPercentage / 100);
   } else {
+    console.log("gross sum hit");
     const importPrice = originalPrice / (1 + markupPercentage / 100);
     const tariffTaxes = importPrice * tariffPercentage / 100;
     adjustedPrice = originalPrice + tariffTaxes;
